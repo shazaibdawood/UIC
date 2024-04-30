@@ -1,0 +1,303 @@
+Background
+Connections is a game published by The New York Times; first released on June 12, 2023.  
+Time’s editor Wyna Liu is credited for creating the game, however, there is some controversy about how similar Connections is to the British television quiz show called Only Connect. 
+
+It is a single player word game.  
+The gameplay involves a grid of sixteen words.  
+The player must select four words that can be grouped into a category.  
+If they properly group all sixteen words into four categories, they win.   
+
+Overview
+Over the course of the semester, you are going to develop parts of this game.  
+In Project 1, you will be developing the input/output components of the project.  
+In Project 2, you will add in some of the logic and error handling.  
+Finally, in Project 6, you will build the graphics and put all the pieces together for a fully functional game.  
+
+Remember: you cannot use advanced concepts not yet covered in the class to solve projects.  
+For example, you may not use if statements, loops, user-defined functions, etc. in this project
+
+Milestone #1 - Welcome screen
+In this milestone, you will create the welcome screen for the Connections game.  
+The purpose of this game component is to welcome users to the game, explain the rules, save their name to the system, and give them the option to start the game.  
+This part is all input/output.  
+Read below carefully because your code must be precisely the same as what is described to receive credit (this includes whitespace, new lines, capitalization, etc.)
+
+Here is a sample input/output:
+
+Connections
+Group words that share a common thread.
+Enter your name: Wyna
+Welcome, Wyna!
+Press enter to start:
+
+Now, some of the above is an output and some is an input.  
+Let’s looks line by line.  
+First two lines are strictly outputs, e.g.:
+
+Connections
+Group words that share a common thread.
+
+Next, we have a user prompted input.  The prompt is:
+
+Enter your name:
+
+The user provided the input – Wyna.  
+That must be captured and saved to a variable to use later (in a few places).  
+Next we have customized welcome message which is a variable output:
+
+Welcome, Wyna!
+
+Lastly, we have another input, the prompt is:
+
+Press enter to start:
+
+The user provides no input, just pressex enter which means gameplay will start (which you will add in the next milestone).  
+Your program will hang here until enter is pressed.
+
+Develop this in the IDE below.  
+Run often in the IDE and once you think it is correct, submit to autograder.  
+You will only get credit for this milestone if you pass the autograder and receive the points from the autograder.  
+We do not manually review your code to give partial credit for close solutions that do not pass.  
+If you are missing something (even something minor like a space), you will get zero credit.  
+
+Milestone #2 - Output Game Board (Hard-Coded Day)
+Now we will output the gameboard.  
+After the user presses enter to start the game, the following board should print to screen:
+
+Create four groups of four!
+| FOR        | WHILE      | DO         | SENTINEL   |
+| INT        | FLOAT      | STRING     | BOOLEAN    |
+| LIST       | DICTIONARY | SET        | TUPLE      |
+| INPUT      | OUTPUT     | COMMENTS   | HEADER     |
+
+For ease of developing, the solution to this board is laid out in a straightforward manner.  
+Each group of four can be found in each of the four rows.   
+For example, “for”, “while”, “do”, and “sentinel” make up one group.  
+It corresponds to the category: “type of loops”.  
+
+In order to output this board, you will need to retrieve the words from a list saved in the starter code called gameboard.  
+Right now, that list is hard-coded to the sixteen words, however, you should write your code generally so that it can output whatever words are contained in the gameboard list.
+
+TIPS:
+The list has the words saved in all lower case, but you will need to output them in upper cases (just like the NYTs does).  
+The string library has a functions like.lower() and .upper().
+You may notice the board has padded the strings with spaces so that the vertical lines line up.   
+Each word should take up 10 characters (either the actual letters or white space padding).  
+Python’s string formatting is one way to do this.  
+
+For example:
+animal = "cat"
+print('{:5}!!'.format(animal))
+
+will output:
+cat  !!
+
+(notice the two zeros padded behind cat)
+
+Milestone #3 - Output Game Board (Variable Day)
+This game will be more fun if we can set up multiple boards and shuffle the board.  
+The NYT’s Connections publishes a new board each day.  
+If you subscribe to the Times, you can play past days games.  
+However, if you don’t subscribe, they only allow you to play today’s game.  
+In our game, we will allow the user to choose a day to play.  
+The prompt will be:
+
+Enter number (0-99): 0
+
+The prompt is “Enter number (-0-99): “ and in this case, the user entered 0.  
+Save the user’s response to a variable because you will need it in the next step.  
+You will generate a gameboard list using a function we have written and provided for you in the starter code.  
+You will call this function like this:
+
+gameboard, solution = readFile(filename)
+
+Where filename is a variable that holds the name of text file in the file tree to the left.  
+For example, if the user enters 0, filename should be “Day0.txt”.  
+You should use string concatenation to generate the filename in one line of code using the variable you saved the user’s response to.
+
+You should be able to comment out the hard-coded gameboard list and replace with the code above (user prompt, filename definition, and call to readFile).  
+If you run your code for Day 0, you should get the same gameboard from the previous milestone:
+
+Create four groups of four!
+| FOR        | WHILE      | DO         | SENTINEL   |
+| INT        | FLOAT      | STRING     | BOOLEAN    |
+| LIST       | DICTIONARY | SET        | TUPLE      |
+| INPUT      | OUTPUT     | COMMENTS   | HEADER     |
+
+Now, run a second time for Day 1, you should get the following gameboard:
+
+Create four groups of four!
+| ACOUSTIC   | AUDITORY   | HEARD      | SONIC      |
+| CABLE      | ELECTRIC   | GAS        | WATER      |
+| COUPLE     | HITCH      | LINE       | TIE        |
+| AMP        | FIRE       | HYPE       | PUMP       |
+
+The Day 0 gameboard is themed around coding, we wrote this one.  
+The Day 1 is a real NYT’s gameboard from December of 2023.  
+There are many other gameboard’s provided in the file tree for you to play once you get your game working.  
+
+As a final step, let’s shuffle the board.  
+Add one more line of code before outputting the board:
+
+shuffle(gameboard)
+
+This is another function we have written and provided for you in the starter code.  
+If you place this line of code before you output the grid of words and run for Day 0, you should get:
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Once you have added all of the above and it working, submit to the autograder.  
+Make sure you have received all the autograder points before moving on to the next milestone.  
+
+Milestone #4 - Get Player's Guess
+We are now going to set up four inputs for the player to “select” four words that they believe make up a category.  
+Here are the prompts with sample user inputs:
+
+Enter first word: for
+Enter second word: while
+Enter third word: do
+Enter four word: sentinel
+
+We will output the result accordingly:
+
+Category found: TYPES OF LOOPS
+Words in category: FOR, WHILE, DO, SENTINEL
+
+The player put in four words that correspond with the category “types of loops”.  
+This can be determined using a third and final function that we wrote and provided to you called checkSolution.  
+Read the header comment above the function at the top of the starter code to determine how to call and use the function to retrieve the category.   
+The “word in category’ output should print in the order the player entered the words.  
+
+There are many edge cases left out in this gameplay.  
+In fact, nearly all of them.  
+Here is a list cases that will not work with this game play:
+
+If the player spells a word wrong
+If the player enters a word not on the gameboard
+If the player accidentally presses enter without entering word
+If the player puts in four words that do not satisfy a category (in other words, they are wrong)
+
+We cannot incorporate these cases until we have branching.  
+But don’t worry!  
+We cover that next and Project 2 will be dedicated to all of this error checking.   
+
+The one case we do handle in this milestone is case sensitivity.  
+Regardless of case entered by player, the words should be recognized.  
+For example, if the player enters “for”, “FOR”, “For”, or any other variation, they should all count the same.
+
+Test your code for different gameboards and test several four word combinations.  
+Remember, the game will only work if the player is correct.   
+Once you are ready, click submit for grading to test against the autograder.  
+
+TIP:  
+Lingering newline characters can sometimes cause problems when dealing with real data.  
+Python has a lot of built-in functions and you will need one for this milestone.  
+There is a function call strip() that will remove newline characters from a string.  
+
+For example, let's say you have:
+word = "cat\n"
+
+When you print, two new lines will appear (one from the \n and one from print).  
+To get rid of that, you can apply the strip function to the variable:
+
+word = "cat\n"
+word = word.strip() # removes newline character
+
+Now, when you print, only the newline from the print statement will apear. 
+
+Milestone #5 - Full Game
+In the previous milestone, you wrote the following outputs to report the result back to the player:
+
+Category found: TYPES OF LOOPS
+Words in category: FOR, WHILE, DO, SENTINEL
+
+We are going to slightly improve on this in this milestone and then finish up the game.  
+If you play the real NYT’s Connections game, it has a very satisfying UI that replaces a row of words with the category found each time you successfully identify a group of four words.  
+We are going to mimic that effect here.  
+To do so, we will remove the two lines of output above.   
+Instead, we will include the category found in the updated screen of the gameboard.  
+For example, let’s say the user starts the game with this board:
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+The player enters:
+
+Enter first word: for
+Enter second word: while
+Enter third word: do
+Enter four word: sentinel
+
+And the next thing that outputs will be an updated board with the category found:
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| TUPLE      | LIST       | COMMENTS   | OUTPUT     |
+| FLOAT      | INPUT      | DICTIONARY | BOOLEAN    |
+TYPES OF LOOPS: FOR, WHILE, DO, SENTINEL
+
+You will then repeat this until the player has found all categories.  
+So, let’s say that the player enters:
+
+Enter first word: int
+Enter second word: string
+Enter third word: float
+Enter four word: Boolean
+ 
+The board now becomes: 
+
+Create four groups of four!
+| SET        | HEADER     | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | INPUT      | DICTIONARY |
+DATA TYPES: INT, STRING, FLOAT, BOOLEAN
+TYPES OF LOOPS: FOR, WHILE, DO, SENTINEL
+
+Now, the player enters:
+
+Enter first word: set
+Enter second word: tuple
+Enter third word: list
+Enter four word: dictionary
+
+And the gameboard updates:
+
+Create four groups of four!
+| HEADER     | COMMENTS   | OUTPUT     | INPUT      |
+CONTAINER TYPES: SET, TUPLE, DICTIONARY, LIST
+DATA TYPES: INT, STRING, FLOAT, BOOLEAN
+TYPES OF LOOPS: FOR, WHILE, DO, SENTINEL
+
+And finally the player enters:
+
+Enter first word: header
+Enter second word: comments
+Enter third word: output
+Enter four word: input
+
+The final screen is:
+
+All categories found!
+COMPONENTS OF A PROGRAM: HEADER, COMMENTS, OUTPUT, INPUT
+CONTAINER TYPES: SET, TUPLE, DICTIONARY, LIST
+DATA TYPES: INT, STRING, FLOAT, BOOLEAN
+TYPES OF LOOPS: FOR, WHILE, DO, SENTINEL
+
+Good game, Wyna! Run program to play again.
+
+And the code has run to completion.  
+
+Test your program for multiple days and a variety of word orders.  
+Once you are ready, click submit for grading.  
+Once you have passed the autograder, don’t forget to finalize your submission in the next section.  
+If you don’t finalize your submission, you cannot receive credit for it.  
+
+And that is it!  
+You wrote Connections!  
+Stay tuned for Project 2 where we will add in some error handling and logic and Project 6 where we will add the graphics. 

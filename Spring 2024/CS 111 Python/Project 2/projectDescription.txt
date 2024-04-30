@@ -1,0 +1,414 @@
+Overview
+Time to add to the next stage of your Connections game.  
+In Project 1, you developed the input/output components of the game.  
+If you didn't complete Project 1, you will need to do that before starting Project 2.    
+In Project 2, you will add in some of the logic and error handling.  
+Finally, in Project 6, you will build the graphics and put all the pieces together for a fully functional game.  
+
+Remember: 
+you cannot use advanced concepts not yet covered in the class to solve projects.  
+For example, you may not use loops, user-defined functions, etc. in this project.
+
+Milestone #1 - Add Error Handling for Player's Name
+
+In this milestone, you will add error handling to the prompted input for player's name.  
+First, we will change the prompt from asking for the player’s name to asking for the player’s username.  
+Therefore, your welcome message will become:
+
+Connections
+Group words that share a common thread.
+Enter your username: 
+Next, we will enforce some conventions for the format of the username:
+
+1. Must be exactly 8 characters
+2. Must start with a letter
+
+You will only give the player one chance to correct their username if it violates the rules.
+
+Here is a sample input/output if the player violates the first rule:
+
+Connections
+Group words that share a common thread.
+Enter your username: shanon
+Username must be 8 characters, please try again: shanon99
+Welcome, shanon99!
+
+Here is a sample input/output if the player violates the second rule:
+
+Connections
+Group words that share a common thread.
+Enter your username: 99shanon
+Username must start with a letter, please try again: shanon99
+Welcome, shanon99!
+
+What happens if the player violates both rules?  
+Just remind them of the first rule, here is a sample input/output:
+
+Connections
+Group words that share a common thread.
+Enter your username: 9shanon
+Username must be 8 characters, please try again: shanon99
+Welcome, shanon99!
+
+Finally, we are only giving the player one chance to correct an invalid username.  
+Soon, we will be able to provide a better user experience.  
+But for now, we are sticking with the tools we have learned so far in the class.  
+Therefore, if the player’s second attempt at a username still does not satisfy the requirements, you should end the game.  
+Here is a sample input/output:
+
+Connections
+Group words that share a common thread.
+Enter your username: 9shanon
+Username must be 8 characters, please try again: shanon9
+Goodbye.
+
+Think about how to set up this logic before you start coding.   
+You want to write this in as few branches as possible.  
+We will test your code on more inputs than these examples including some that will trigger edge cases that we want you to think about considering.  
+Develop your code, test often, and when ready, submit for grading to test against the autograder.  
+
+Tip:   
+It might be useful to check out the string methods like isalpha(), isnumeric(), isdecimal(), islower(), isupper(), isdigit(), isalnum(), etc.  
+These methods will help you complete this milestone and future milestones.
+
+Milestone #2 - Add Error Handling for reading data from file
+
+You should start by copy and pasting the code you wrote in Milestone 1 into the Milestone 2 IDE.  
+Milestone 2 will add on to what you did in Milestone 1.   
+In this milestone, you will add error handling to make sure you only attempting to read data from a valid file.   
+Let’s go back to the input prompt we used:
+
+Press enter to start: 
+Enter number (0-99):
+
+First, we are going to check if the player followed the instructions in the prompt.  
+We are going to check:
+
+1. The input is an integer
+2. The input is an integer between 0 and 99 inclusive
+
+If the player violates either of those rules, we will give them one more chance.  
+Here is a sample input/output if the user enters a valid number:
+
+Connections
+Group words that share a common thread.
+Enter your username: shanon99
+Welcome, shanon99!
+Press enter to start:
+Enter number (0-99): 0
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Here is a sample input/output if the user enters an invalid input (note, they get a second chance and enter a valid input on the second chance):
+
+Connections
+Group words that share a common thread.
+Enter your username: shanon99
+Welcome, shanon99!
+Press enter to start:
+Enter number (0-99): red
+Enter number (0-99), please try again: 1
+
+Create four groups of four!
+| LINE       | CABLE      | GAS        | PUMP       |
+| HEARD      | SONIC      | TIE        | COUPLE     |
+| HYPE       | FIRE       | ELECTRIC   | ACOUSTIC   |
+| AMP        | HITCH      | WATER      | AUDITORY   |
+
+Here is another sample input/output:
+
+Connections
+Group words that share a common thread.
+Enter your username: shanon99
+Welcome, shanon99!
+Press enter to start:
+Enter number (0-99): 101
+Enter number (0-99), please try again: 1
+
+Create four groups of four!
+| LINE       | CABLE      | GAS        | PUMP       |
+| HEARD      | SONIC      | TIE        | COUPLE     |
+| HYPE       | FIRE       | ELECTRIC   | ACOUSTIC   |
+| AMP        | HITCH      | WATER      | AUDITORY   |
+
+Now, what happens if they if they fail to provide a valid input on their second attempt?  
+We will create a default board in this case which will also be Day0.txt.  
+See the sample input/output:
+
+Connections
+Group words that share a common thread.
+Enter your username: shanon99
+Welcome, shanon99!
+Press enter to start:
+Enter number (0-99): 2000
+Enter number (0-99), please try again: 200
+Sorry, that board is unavailable, setting up the default board.
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Finally, we need to add one more check.  
+This will be done after validating the number above.  
+Now, we will check that the file exists before calling readFile function.   
+This is a common best practice.  
+Before attempting to open a file, you should always make sure the file exists.  
+In Python, there is a module we can use to do this so scroll up to the top of the starter code and you will notice there is a new module:
+
+import os
+
+The function we will use, works in the following way.  If you type:
+
+print(os.path.exists(“Day0.txt”))
+
+in your code and run, “True” should print to the screen.  If you type:
+
+print(os.path.exists(“Day99999.txt”))
+
+in your code and run, “False” should print to the screen.  
+This function looks in your file tree for the file and returns whether or not the file exists.  
+You will use this function to finish up this milestone.  
+For example, if the user provides a valid number but that file isn’t included in the file tree, here is the sample input/output:
+
+Connections
+Group words that share a common thread.
+Enter your username: shanon99
+Welcome, shanon99!
+Press enter to start:
+Enter number (0-99): 50
+Sorry, that board is unavailable, setting up the default board.
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Similarly, you might want to consider the player putting this on their second attempt:
+
+Connections
+Group words that share a common thread.
+Enter your username: shanon99
+Welcome, shanon99!
+Press enter to start:
+Enter number (0-99): 100
+Enter number (0-99), please try again: 50
+Sorry, that board is unavailable, setting up the default board.
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Think about how to set up this logic before you start coding.   
+You want to write this in as few branches as possible.  
+We will test your code on more inputs than these examples.  
+Develop your code, test often, and when ready, submit for grading to test against the autograder.  
+Make sure to test with invalid usernames too (that should still work!  Including the early exit from the game).
+
+Milestone #3 - Add Error Handling to player's guessed word
+
+You should start by copy and pasting the code you wrote in Milestone 2 into the Milestone 3 IDE.  
+Milestone 3 will add on to what you did in Milestone 2.   
+In this milestone, you will add code that verifies the user has entered a valid word for each of the four guesses.   
+A valid word is any word that is on the gameboard and has not yet been selected.  
+We will accept words written in any case and will clean the word of extra newlines.  
+Like before, we will only give the player one chance to correct an invalid word.  
+For example, check out this truncated input/output sample:
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Enter first word: sets
+Not a valid game board word, try again: set
+
+If the player does not get it correct on the second attempt, we will end the game:
+ 
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Enter first word: sets
+Not a valid game board word, try again: sat
+Goodbye.
+ 
+This check will happen for each word.  
+You should get a second chance on each word.  
+See this sample input/output fragment:
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Enter first word: sets
+Not a valid game board word, try again: set
+
+Enter second word: floats
+Not a valid game board word, try again: float
+
+Enter third word: output
+
+Enter fourth word: comments
+
+Checking solution.
+
+If the player, successful enters four valid words, print “Checking solution.”  
+
+NOTE: 
+We will remove this in the next milestone and actually check the solution.  
+If there player does not successfully enter four valid words, you should exit the game as soon as two attempts does not result in a valid word.  
+Here is a sample input/output fragment showing this:
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Enter first word: set
+
+Enter second word: header
+
+Enter third word: lists
+Not a valid game board word, try again: tuples
+
+Goodbye.
+
+And remember a valid word is one that is on the gameboard AND has not yet been selected.  
+So, we should also prompt a second time if the user enters a word previously entered, for example:
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Enter first word: set
+
+Enter second word: set
+Not a valid game board word, try again: list
+
+Enter third word: list
+Not a valid game board word, try again: for
+
+Enter fourth word: while
+
+Checking solution.
+
+Finally, we will allow user to enter words using any case and stripping away extra whitespace.  
+For example, if the player types “SET” or “set” or “Set”, all should be considered valid words.  
+Similarly, “set “, or “ set”, or “SET   “, are all valid words.  
+Using string functions like upper(), lower(), and strip() will make this extra error handling quite straightforward (but also improves the game play quite a bit).  
+
+Think about how to set up this logic before you start coding.  
+We will test your code on more inputs than these examples.  
+Develop your code, test often, and when ready, submit for grading to test against the autograder.  
+Make sure to test with invalid usernames too (that should still work!  
+Including the early exit from the game).
+
+Milestone #4 - Allow for Gameplay Mistakes
+
+You should start by copy and pasting the code you wrote in Milestone 3 into the Milestone 4 IDE.  
+Milestone 4 will add on to what you did in Milestone 3.   
+In this milestone, you will incorporate code that determines and reports back to player whether or not their four words correctly identify a category.  
+The code you write here should go at the same location you wrote the print statement “Checking solution.” in the previous milestone.  
+You will replace that print statement with what is described here.
+
+Let’s show what happens if the four words do not form a category, sample input/output fragment:
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Enter first word: set
+
+Enter second word: int
+
+Enter third word: string
+
+Enter fourth word: header
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+Mistakes: 1
+
+Note that instead of the “Checking solution.” output statement, we just re-print the board and report number of mistakes.  
+After this, you will request the four words again.  
+Here is a sample input/output fragment for when the user correctly identifies a category:
+
+Create four groups of four!
+| SET        | INT        | STRING     | HEADER     |
+| DO         | SENTINEL   | TUPLE      | LIST       |
+| COMMENTS   | OUTPUT     | FLOAT      | FOR        |
+| INPUT      | DICTIONARY | BOOLEAN    | WHILE      |
+
+Enter first word: set
+
+Enter second word: list
+
+Enter third word: tuple
+
+Enter fourth word: dictionary
+
+Create four groups of four!
+| INT        | STRING     | HEADER     | DO         |
+| SENTINEL   | COMMENTS   | OUTPUT     | FLOAT      |
+| FOR        | INPUT      | BOOLEAN    | WHILE      |
+CONTAINER TYPES: SET, LIST, TUPLE, DICTIONARY
+Mistakes: 0
+
+This is the same as Project 1, where you remove the words from the gameboard and replace the row with the category found.  
+You will also include the number of mistakes.  
+For this Milestone, we are only having you program two rounds of gameplay.  
+The player will only be able to attempt two rounds, regardless of whether or not the player gets the categories correct.   
+This means, the player could get two categories correct, then the game ends.  
+Or they could get one correct and one mistake (or vice versa), then the game ends.  
+Or they could make two mistakes, then the game ends.  
+That is how we will leave the game for the required portion of Project 2.   
+
+Tip: 
+To determine if the player found a category or not, read the checkSolution function and see if you can figure out what the function returns when a category is found and what the function returns when a category is not found.  
+Even without fully code literacy, you should be able to figure it out.   
+Use the information to create branching for the two cases above.
+
+Think about how to set up this logic before you start coding.  
+We will test your code on more inputs than these examples.  
+Develop your code, test often, and when ready, submit for grading to test against the autograder.  
+Make sure all the error handling in the previous milestones still work with this gameplay.  
+
+Milestone #5 - Full Game (Extra Credit)
+
+This milestone is optional but also open-ended.  
+Completing this milestone can give up to 20 points of extra credit.  
+You may only receive credit for this milestone if, like the other milestones, you abide by the requirements listed at the bottom of this projects.  
+This includes not using any advanced concepts not yet covered in this class (i.e. no loops, no user-defined functions, etc.). 
+
+You should create a fully working game that has error handling for the username, error handling for the filename, error handling for words entered, is able to check if the player correctly identified a category or incurred a mistake, and finally your game should end when the user has found all categories (or has made at most two mistakes).  
+Without loops and user-defined functions, this is quite a clumsy program.  
+You will need to repeat a lot of code. 
+
+You can add or remove anything you like (outside of what was described above).  
+You can change outputs, inputs, or the general game play as long as it still is the Connections game.  
+Remember, we will revisit this game at the end of the semester when we program the graphics version for Project 6 (and at that time, we will be able remove all the repeated code in this version).  
+
+Make sure to submit for grading.  
+We cannot grant the extra credit unless the IDE has been submitted.

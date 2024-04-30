@@ -1,0 +1,239 @@
+In this project, we are going to create the graphical user interface (GUI) for the connections game using Turtle graphics.  
+This project does allow you some freedom in how you design your graphics.  
+We expect each student to produce a final game that has variations in color, shapes, layout, etc.  
+Here is the look of the NYT's Connections Game (both mobile and desktop versions):
+
+In summary, you are going to recreate this user interface for this project.  
+We will be able to incorporate some functionality but a fully operational Connections game is a bit out of scope for a two week project.  
+However, a great personal project you can work on if you are interested.  
+If you haven't yet, please open up the game and play it a bit so you can become familiar with the user interface (how the buttons work and what they do).  
+Here is Turtle Graphics full version:
+
+Milestone #1 - Draw one word box
+In a file called main.py, implement a program that can draw one box to screen.  
+You should develop this code as a user-defined function.  
+The user-defined function should have many parameters -- exactly which ones, the order, and parameters names are your choice.  
+You are also allowed and encouraged to decompose into more than one function.  
+Here are requirements of your function(s):
+
+-function name is meaningful
+-when called, it draws one "box" (this can be a square, rounded square, or any other shape you choose) 
+-the turtle that draws the box is created outside of the function and then sent in as an argument
+-the function has parameters for location of the box, size of the box, and color of the box.
+-the function can write text centered inside the box.
+
+Here are some example windows you should be able to replicate by calling your function three different ways:
+
+Left: a red box located at (0, 0) with a width of 100 and height of 100 with "enjoy" printed in black inside.
+Middle: a blue box located at (-100, 100) with a width of 300 and height of 200 with "the" printed in white inside.
+Right: a purple box located at (100, 0) with a width of 200 and height of 400 with "project" printed in yellow inside.
+
+TIP:  Zybooks has updated the IDE a bit now you must click the "Desktop" tab after running your code so you can see the graphics window.
+
+Don't forget to submit for grading on this milestone before moving on to the next milestone.  
+We can't grade your work if it is not submitted.  
+In order for your code to properly submit (without timing out), make sure: 
+
+(a) you have commented out turtle.mainloop(); 
+(b) your graphics drawing is not too slow (use turtle.tracer(False)).  
+
+Milestone #2 - Draw grid of word boxes
+In a file called main.py, implement a program that can draw a grid of word boxes to the screen.  
+To do this, you should call the function(s) you called in Milestone #1.  
+You should use the provided starter code function to read in 16 words from the provided data file, which will store the 16 words in a list (same code from Projects 1 and 2).  
+Then create two nested for loops that draw a 4 by 4 grid of boxes with those words from the list.  
+Here is a sample graphic using Day0.txt and neutral colors (see NYT's Connections game for colors they used):
+
+Here is another example with "Day1.txt" and pink boxes:
+
+In short, the code you develop for Milestone 2 should be able to produce a game board with any list of 16 words.  
+The design of your game board (colors, spacing, shape, etc.) is totally up to you!  
+You can see the examples shown above are more like the mobile version of the app (with square buttons).  
+You are free to design your layout however you'd like.  
+
+Requirements
+You should decompose the code for this milestone into at least one function.  
+The function's purpose should be to setup this game board (draw a 4 by 4 grid with any provided list of 16 words).  
+You have a lot of choices on how you want to do this but a few requirements:
+
+-Your function should accept a list of words as a parameter and draw those words into the grid.
+-Your function should accept a list of 16 word boxes (which should be a list of 16 turtles) as a parameter.  
+    This is really helpful for game play later as you will more easily be able to access and change each word box.
+-Your function to call/use the function(s) you wrote in MS 1
+
+You can choose if you want things like box shape, box size, box color, text color, box location, etc. to be function parameters, global constants, global variables, or even local function variables.  
+In the examples above, the box size and font size are global constants set at the top of the file near the import statements:
+
+import turtle
+import math
+import random
+WIDTH = 70
+HEIGHT = 70
+FONTSIZE = 7
+It is a common style practice in nearly all programming languages: to set constants at the top of the file and use all caps.  
+You don't need to do it this way, this is just an idea.  
+Your choices here really affect how easy it will be to program in game play later.  
+It would be a good idea to plan things out now (read all four milestones) before proceeding.  
+If you don't, you might find yourself re-writing this portion later.
+
+NOTE: the examples above are not shuffling the words in order for you to more easily match them.  
+We do recommend you shuffle your words on the game board as it is more fun the play with a shuffled board.  
+
+Don't forget to submit for grading on this milestone before moving on to the next milestone.  We can't grade your work if it is not submitted.
+
+Milestone #3 - Incorporate Word Selection
+In a file called main.py, implement a program that incorporates word selection in the gameplay of your Connections game.  
+This will incorporate event driven programming.  
+The event we will use for this milestone is a screen click.  
+While it is possible to design this game with 16 turtle clicks instead, the screen click is a slightly cleaner implementation.  
+This tricky part of this step is to carefully consider what variables need to be set to global.  
+Here is an animation of where your game should be after this milestone:
+
+The functionality we are looking for in this milestone is to be able to select up to four words by clicking on each word.  
+If the user tries to click on more than four (in the animation, the user tries to select hitch after selecting acoustic, cable, auditory, and electric), the selection should not work.  
+Additionally, the user can click an already selected word to unselect it.  
+Also, please make a new turtle to write the title/instructions for the game above the game board ("Create four groups of four!").
+
+How to get started
+If you want to think about how to implement this milestone on your own, skip this entire explanation.  
+If you need help getting started and walking through the steps, here is the basic idea.  
+
+You should bind a function to a screen* on-click.  
+You will only have exactly one event binding, everything happens in the function you bind to the event.  
+Every time the screen is click, the function is entered and the location of the click is passed in.  
+Using your global list of word box turtles that you set up in MS 3, you can loop through all 16 turtles to find the one closest to the on-click location.  
+Once it is found, change it's color (call the draw word box function you wrote in MS 1!).  
+Get this working first, before moving on.  
+Here is a bit of pseudo-code of what this will look like:
+
+def function1(x, y):  # don't use this name, choose a good function name
+    # use x, y (the location of the click) and find the closest turtle 
+    # to do this, you should loop through the 16 word box turtles 
+    # and find which one is closest
+    
+# in main
+s.onclick(function1)
+Once you get this working, you should be able to select all the words (but you won't be able to unselect them).  
+If you are having trouble seeing the word box change color with an on-click, try printing in your binded function to make sure it is working as expected.
+
+*You might want to implement 16 turtle on-clicks.  
+While we won't strict prohibit you from this approach, it is strongly discouraged.
+
+Adding unselect
+Now, you will need to add a bit more functionality.  
+Don't start this part until you can select any word box by clicking on it and changing its color.  
+Next, we are going to implement the ability to select and unselect word boxes.  
+You can do this many ways, but remember that the only parameters allowed for your binded function are x and y (we called it function1 above, don't use that name).  
+That means any additional information needed will need to be a global variable (like the list of 16 word box turtles).  
+
+In order to get this working, the general idea is:
+
+def function1(x, y):  # don't use this name, choose a good function name
+    # use x, y (the location of the click) and find the closest turtle 
+    # to do this, you should loop through the 16 word box turtles 
+    # and find which one is closest, let's call this selectedBox
+
+    if (selectedBox is not selected):
+        # select it - change the color (dark gray in example animation)
+    else: # selectedBox is selected
+        # unselect it - change to the original color (light gray in example animation)
+    
+# in main
+s.onclick(function1)
+How do you want to keep track of which boxes are selected and which boxes are unselected?  
+That is up to you.  You could make another global list called selected.  
+It could be a parallel list to the list of global word box turtles (means first word box turtle pairs with first item in selected).
+
+wordBoxes = [wordBox0, wordBox1, ...]
+selected = [True, False, ..]
+
+So wordBox0 is selected and wordBox1 is unselected.
+
+Or you can use any other container or data storage you'd like.  
+Just make sure it is global and it can be used to keep track of which word boxes are selected.
+
+Test your code before moving on to make sure you can both select and unselect words.
+
+Limiting selection to four words
+Finally, you need to add a check that only allows the player to select up to four words.  
+When they have attempted to select more than 4, it should ignore the click (do nothing).  
+
+How to do this?  
+
+-You will need a global variable to keep track of the number of selected boxes.  
+
+-You need to update that variable anytime a select/unselect happens.  
+
+-You need to update the criteria in the if statement above to only select if the word box is unselected AND the player hasn't already selected four.
+
+Make sure to test your code with lots of different select/unselect combinations.  Submit for grading before moving on to the next section so we can grade this milestone.  
+
+Milestone #4 - Submit Answers and Check Solution
+In a file called main.py, add functionality to check the player's solution.  Here is an example of what you should add:
+
+Here are the features you need to add:
+
+1.  Add a submit button (any shape, size, location on screen).
+2.  Once the player has selected four words, emphasize the submit button in some way (in this example, we changed the color).  If the player unselects a word and no longer has four selected, the submit button should be de-emphasized back to normal.
+3.  Add the "Mistakes Remaining: ****" to the screen.  The example above just uses text written to screen.  You can make it more graphical if you'd like.
+4.  When the submit button is clicked, you should check the solution and either 
+        (a) notify the user they found a category or 
+        (b) reduce the mistakes remaining by one.
+
+How to get started
+Step 1 should be the most straight forward.  
+Create another turtle and add it to the screen.
+
+Step 2 needs to be incorporated into the event binding.  
+Since you already have some code that checks if there are four words selected or not, you will just add the code that changes the submit button color to that code.
+
+Step 3 needs another new turtle.  
+Having a dedicated turtle to each task makes for the cleanest decomposition of turtle graphics.  
+You will simply update the mistakes turtle text every time it is possible that it could change.  
+This will happen inside the function binded to the screen on click (a lot happens in this function!)
+
+Step 4 is the trickiest but not too bad.  
+There are several ways to do this.  
+You could create a turtle on-click binding to the new submit button turtle and also write a new function to bind just to the submit button turtle.  
+However, I recommend just using the same screen on click function you already set up in the previous milestone.  
+You will just need to add another if statement that determines if the click is close enough in distance to submit button turtle.  
+And then the code/user-defined functions that decrements the mistakes or notifies the player they found a category is all in the same on screen click function.  
+
+Once you get your graphics to respond to the click, you have several steps to get the functionality set up. 
+You need to check if the selected words match a category.  
+To do this, you need to extract the words associated with the word boxes selected.  
+This is not as obvious as you might think initially.  
+We suggested the following global variables in a previous milestone:
+
+wordBoxes = [wordBox0, wordBox1, ...]
+selected = [True, False, ..]
+
+These parallel lists allow you to keep track of which word boxes are selected.  
+You could then make a third parallel list the stores the words:
+
+words = ["while", "input", ...]
+
+Which means in wordBox0 the word while is written and it is selected and in wordBox1 the word input is written and it is not selected.  
+You can use these three global lists to then generate a set of four selected words that can be sent into checkSolution function provided (and that you have already used).  
+However, feel free to use dictionaries or any other containers to keep track of this part of the game.  
+
+Finally, notifying the player they have found a category is where we are going to end the game.  
+The example above is intentionally a horrible combination of colors (hot pink and royal blue).  
+This is another creative component.  
+Functionally and artistically make this part your own.  
+If you want to move the game along from here, see the extra credit below.  
+Otherwise, this is the end of the requirements for Project 6.
+
+Extra Credit
+If you are enjoying making this game, you can do more a receive up to 100 pts extra credit (this is a significant amount of extra credit). 
+
+You can receive up to 100 pts extra credit for moving the game along:
+
+-30 pts for at least two rounds of play (so one more round than what you currently have)
+-50 pts for at implementing a full game. 
+    Player should lose if they have made 4 mistakes and should win if they have 4 categories selected. 
+    Design of how to update player on their progress is up to you.
+-100 pts for implements full game as shown in Background section. 
+    Player should lose if they have made 4 mistakes and should win if they have 4 categories selected. 
+    Category notification should be designed like Background animation (and like the real connections game). 
+    The found categories replace a row in the game board and the four words are removed from the game board.

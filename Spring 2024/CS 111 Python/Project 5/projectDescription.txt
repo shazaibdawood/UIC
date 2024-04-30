@@ -1,0 +1,223 @@
+Background
+DNA, the carrier of genetic information in living things, has been used in criminal justice for decades. 
+But how, exactly, does DNA profiling work? Given a sequence of DNA, how can forensic investigators identify to whom it belongs?
+
+Well, DNA is really just a sequence of molecules called nucleotides, arranged into a particular shape (a double helix). 
+Each nucleotide of DNA contains one of four different bases: adenine (A), cytosine (C), guanine (G), or thymine (T). 
+Every human cell has billions of these nucleotides arranged in sequence. 
+Some portions of this sequence (i.e. genome) are the same, or at least very similar, across almost all humans, but other portions of the sequence have a higher genetic diversity and thus vary more across the population.
+
+One place where DNA tends to have high genetic diversity is in Short Tandem Repeats (STRs). 
+An STR is a short sequence of DNA bases that tends to repeat consecutively numerous times at specific locations inside of a person’s DNA. 
+The number of times any particular STR repeats varies a lot among individuals. 
+In the DNA samples below, for example, Edsger has the STR AGAT repeated four times in her DNA, while Alan has the same STR repeated five times.
+
+Using multiple STRs, rather than just one, can improve the accuracy of DNA profiling. 
+If the probability that two people have the same number of repeats for a single STR is 5%, and the analyst looks at 10 different STRs, then the probability that two DNA samples match purely by chance is about 1 in 1 quadrillion (assuming all STRs are independent of each other). 
+So if two DNA samples match in the number of repeats for each of the STRs, the analyst can be pretty confident they came from the same person. 
+CODIS, The FBI’s DNA database uses 20 different STRs as part of its DNA profiling process.
+
+What might such a DNA database look like? 
+Well, in its simplest form, you could imagine formatting a DNA database as a text file, where in each row corresponds to an individual, and each column corresponds to a particular STR.
+
+name,AGAT,AATG,TATC
+Alan,28,42,14
+Edsger,17,22,19
+Katherine,36,18,25
+
+The data in the above file would suggest that Alan has the sequence AGAT repeated 28 times consecutively somewhere in his DNA, the sequence AATG repeated 42 times, and TATC repeated 14 times. 
+Edsger, meanwhile, has those same three STRs repeated 17 times, 22 times, and 19 times, respectively. 
+And Katherine has those same three STRs repeated 36, 18, and 25 times, respectively.
+
+So given a sequence of DNA, how might you identify to whom it belongs? 
+Well, imagine that you looked through the DNA sequence for the longest consecutive sequence of repeated AGATs and found that the longest sequence was 17 repeats long. 
+If you then found that the longest sequence of AATG is 22 repeats long, and the longest sequence of TATC is 19 repeats long, that would provide pretty good evidence that the DNA was Edsger's. 
+Of course, it’s also possible that once you take the counts for each of the STRs, it doesn’t match anyone in your DNA database, in which case you have no match.
+
+In practice, since analysts know on which chromosome and at which location in the DNA an STR will be found, they can localize their search to just a narrow section of DNA. 
+But we’ll ignore that detail for this problem.
+
+Overview
+This project is broken down into milestones.
+Each milestone should be fully tested by you before moving on to the next milestone.
+In addition, there are a set of test cases for each milestone provided in the autograder.
+
+Your task is to write a program that takes a sequence of DNA and a text file containing STR counts for a list of individuals and then outputs to whom the DNA (most likely) belongs.
+
+Milestone #1 - Read All Sequences
+In a file called main.py, implement a program that reads and prints the sequence files. 
+The program should have one or two input prompts, depending on the first input provided by the user. 
+
+If the input is small.txt, your program should open the DNA sequence files 1-4 and print their contents one by one. 
+If the input is large.txt, your program should open the DNA sequence file based on the second integer input and print its contents. 
+See the examples below.
+
+Input: 
+small
+
+Output: 
+AAGGTAAGTTTAGAATATAAAAGGTGAGTTAAATAGAATAGGTTAAAATTAAAGGAGATCAGATCAGATCAGATCTATCTATCTA...
+
+Input: 
+large
+5
+
+Output: 
+GCTAAATTTGTTCAGCCAGATGTAGGCTTACAAATCAAGCTGTCCGCTCGGCACGGCCTACACACGTCGTGTAACTACAACAGC...
+
+Input: 
+large
+19
+
+Output: 
+GTACTCACTGCTCTTCTGTCCGAGGGCTCTAGTACAATTAATTCCGGGGTTTGGTTTAATCAGGCTTCGGTATTTCAGGCCACT...
+
+Sequences are very long so they are not shown completely in examples above. 
+
+Run and Test Milestone #1
+Develop your code incrementally and run often until it looks right. 
+You should test on all files to make sure your function is written generally and will work for all. 
+When you feel confident your code is right, submit your code and test against the autograder. 
+You have unlimited attempts. 
+See the test case below for the format of the output.
+
+WARNING:  
+Files 5.txt through 20.txt are large files.  
+If you have infinite loops or excessive outputs, Zybooks will block you.  
+You will know you have been blocked if you see "Page unresponsive error" on your browser.  
+Changing browsers, refreshing, etc. will not fix this error.  
+Instead, email support@zybooks.com.  
+And more important: do not run and submit often if you have infinite loops and/or excess outputs.  
+
+WARNING2: 
+If you click "reset the workspace", then Zybooks may change your default file.  
+This means, when you click run, it will not run main.py but some other text file in the filetree.  
+To fix this, you have three options:  
+(1) click on the gear/settings and change the default fail back to main.py.  
+(2) click the down arrow next to the run bottom and select main.py instead of just clicking run.  
+(3) type "python3 main.py" in the terminal instead of clicking the run button.
+
+Milestone #2 - Read All Databases
+In a file called main.py, implement a program that reads and prints the database files. 
+The program should have one input prompt: the string value of the database file (before .txt) to read.
+
+Your program should open the appropriate database file (either small.txt or large.txt) and print its contents in the following format:
+
+Alan: 28 42 14
+Edsger: 17 22 19
+Katherine: 36 18 25
+STR list: ['AGATC', 'AATG', 'TATC']
+
+You may assume that the first row of the file will be the column names. 
+The first column will be the word name and the remaining columns will be the STR counts themselves. 
+You are required to read the whole file and you can not hard-code anything. 
+You should save the data from the file into a container and then printing out the data from this container. 
+The data needs to be stored in a container for the next step. 
+We recommend a container that can be easily searched by STR count.  
+
+Run and Test Milestone #2
+Develop your code incrementally and run often until it looks right. 
+You should test on all files to make sure your function is written generally and will work for all. 
+When you feel confident your code is right, submit your code and test against the autograder. 
+You have unlimited attempts. 
+See the test case below for the format of the output.
+
+Milestone #3 - Count All STR occurrences
+In a file called main.py, implement a program that identifies to whom a sequence of DNA belongs. 
+The program should have one input prompt: the integer value of the DNA sequence to process.
+
+Firstly, your program should open the appropriate database file (either small.txt or large.txt) and read its contents into memory.  
+At this point, we recommend that you read Milestone #4 before programming Milestone#3.  
+Milestone #3 is a stepping stone for Milestone #4 (which is a challenging step).  
+Like the first sentence says, your program should store the entire database file into memory (like a in a dictionary), as this will be needed later on.  
+You may assume that the first row of the file will be the column names. 
+The first column will be the word name and the remaining columns will be the STR sequences themselves. 
+The small.txt database goes with DNA sequences 1-4, the large.txt database goes with DNA sequences 5-20.
+
+Secondly, your program should open all DNA sequence files and read their contents into memory. 
+For each of the STRs (from the first line of the STR counts file), your program should compute the total number of instances of the STR. 
+Note that the algorithm described above is to computing "longest run of consecutive repeats of the STR". 
+We will do that in Milestone #4. But is pretty tricky. 
+So before doing that, we will do a simpler step which is just to count total number of instances of each STR (which should be higher than the longest run of consecutive repeats of the STR).  
+
+If the STR counts match exactly with any of the individuals in the file, your program should print out the name of the matching individual. 
+You may assume that the STR counts will not match more than one individual. 
+If the STR counts do not match exactly with any of the individuals in the database file, your program should print "No Match." 
+See examples below.
+
+Enter number (1-20): 
+Dna Sequence #1 matches: Edsger
+
+Enter number (1-20): 
+Dna Sequence #13 matches: No Match.
+
+Run and Test Milestone #3
+Develop your code incrementally and run often until it looks right. 
+You should test on all files to make sure your function is written generally and will work for all. 
+When you feel confident your code is right, submit your code and test against the autograder. 
+You have unlimited attempts. 
+See the test case below for the format of the output.
+
+Milestone #4 - Full Program
+In a file called main.py, implement a program that identifies to whom a sequence of all 20 DNA sequences belongs. 
+The program has no inputs, it should loop through all 20 files and identify each one. 
+
+Firstly, reading in the appropriate database file and saving its content to the memory should be the same in Milestone #4 as Milestone #3.
+
+Secondly, your program should open each DNA sequence files and read their contents into memory. 
+This part will be different in Milestone #4 compared to Milestone #3. 
+For each of the STRs (from the first line of the STR counts file), your program should compute the longest run of consecutive repeats of the STR in the DNA sequence to identify. 
+This is a more complex algorithm than Milestone #3. 
+
+Lastly, your program should print out the name of the matching individual for all DNA sequence files. 
+This part is different from the Milestone #3. 
+See example below.
+
+Dna Sequence #1 matches: Edsger
+Dna Sequence #2 matches: No Match.
+...
+
+Run and Test Milestone #4
+Develop your code incrementally and run often until it looks right. 
+You should test on all files to make sure your function is written generally and will work for all. 
+When you feel confident your code is right, submit your code and test against the autograder. 
+You have unlimited attempts. 
+See the test case below for the format of the output.
+
+Note: 
+The data files (text files) in Milestone #4 are not the same as Milestone #3.
+
+Milestone #5 - STRs Plots
+In a file called main.py, implement a program that produces plots for each sequence showing an amount of each STR. 
+The program has no inputs, it should loop through all 20 sequence files and plot each one. 
+
+Your program should be the same as Milestone #4 but without text output so copy your code from Milestone #4. 
+You can only use matplotlib.pyplot library in this milestone. 
+For each of the sequence files, your program should make a plot and save it as png image using savefig function. 
+
+If the STR counts match exactly with any of the individuals in the file, your program should use the sequence file name and the name of the matching individual as title of the plot. 
+If the STR counts do not match exactly with any of the individuals in the text file, the plot title should include "No Match." 
+See the examples below for the format of the title.
+
+TIP: 
+If you are creating multiple plots at once, you will want to open up a new figure each time.  
+You can do this by typing plt.figure() at the top of your plotting code.
+
+Extra Credit
+You can earn extra credit by using subplots function to create one large plot with 20 smaller subplots to fit all DNA sequences. 
+You may find subplots_adjust, and set_title functions useful.
+
+Run and Test Milestone #5
+Your code should be able to plot all sequence files listed. 
+The points from this milestone will solely depend on the plot png's your program produces. 
+They will be manually graded by TA's. 
+The autograder here will only be making sure your outputs are correct, but will not be worth any points. 
+
+When we run your code to generate your plots, we will first run the command:
+
+rm *.png
+
+which will delete any images in your filetree.
+
+Note: 
+The data files (text files) in Milestone #5 are not the same as Milestone #3 but the same as Milestone #4.

@@ -1,0 +1,312 @@
+Background
+Gerrymandering has been a popular topic in the news and the subject of a Supreme Court case. 
+Gerrymandering is creating voting districts in such a way that gives one party an unfair advantage over the other. 
+Political parties do this in attempt to help themselves stay in power. 
+A research group came up with a mathematical definition for what constitutes gerrymandering. 
+Even if you disagree with this definition of gerrymandering, it is interesting to understand it better.
+
+Overview
+This project is broken down into milestones. 
+Each milestone should be fully tested by you before moving on to the next milestone. 
+In addition, there are a set of test cases for each milestone provided in the autograder.
+
+Your task is to write a program that prompts the user for a state name, and then determines whether the state’s districts are gerrymandered, according the researchers’ definition, and output a graphical representation of the districts using driver.py.
+
+Milestone #1 - Reading Districts File
+In the file called main.py, implement a program that gives an introduction of the program and then prompts the user for a state name. 
+It should then read the district file searching for that state, case-insensitively (that is, you should find the state regardless of the capitalization the user uses when typing it in). 
+
+If the state is found in the file, your program should print its districts info as a list of strings. 
+Why a list? 
+Because you will need it for the next milestones. 
+See example below.
+
+This program allows you to search through data about congressional voting districts and determine whether a particular state is gerrymandered.
+
+Which state do you want to look up? Maine
+Districts info: ['1', '186674', '94751', '2', '118568', '133320']
+
+If the state is not found, your program should output:
+
+Which state do you want to look up? Illi
+Illi not found.
+
+Each line of districts.txt contains a state name followed by district information in groups of three. 
+The first of the three is the district number, the second is the democratic votes in that district and the third the republican votes in that district.  
+Depending on the size of the state, there will be a different number of districts. 
+See example below.  
+Alaska only has one district since it is small and has 114596 democratic votes and 142566 republican votes.
+
+Arkansas,1,63555,124139,2,103477,123073,3,0,151630,4,87742,110789 
+Alaska,AL,114596,142566 
+Rhode Island,1,87060,58877,2,105716,63844 
+
+Notice that the data is separated with commas (","). 
+You should use Python built-in functions to parse strings. 
+You should also use open function for file reading. 
+You may assume that the district numbers and the vote counts will always be integers.
+
+How to read a file
+You need to use open function to read files. 
+Let's assume that sample.txt includes following:
+
+Line 1
+Line 2
+Line 3
+Line 4
+
+After running the code below, the value saved in list is ['Line 1', 'Line 2', 'Line 3', 'Line 4']. 
+
+file = open("sample.txt")
+list = file.readlines()
+
+As you can see, each line from the file becomes an element of the list.  
+
+Design choice: How to store the data from the file?  
+That is up to you.  
+The whole program relies on looking up gerrymandering data via the inputted state name.  
+What types of containers provide easy and efficient lookup?  
+Also, yes, you can have nested containers.  
+Lists of lists.  
+Dictionary values that are lists.  
+Lists of dictionaries.  
+The sky is the limit (actually: dictionaries do not allow lists as keys, only types...so there are some limits).  
+
+Run and Test Milestone #1
+Develop your code incrementally and run often until it looks right. 
+You should test on all files to make sure your function is written generally and will work for all. 
+When you feel confident your code is right, submit your code and test against the autograder. 
+You have unlimited attempts. 
+See the test case below for the format of the output.
+
+Milestone #2 - Reading Voters File
+Continuing from the last milestone, we will add output reporting the number of eligible voters in the inputted state.  
+
+If the state is found in the file, your program should print its number of eligible voters. 
+See example below.
+
+This program allows you to search through data about congressional voting districts and determine whether a particular state is gerrymandered.
+
+Which state do you want to look up? utah
+Eligible voters: 1993581
+
+If the state is not found, your program should output:
+
+Which state do you want to look up? UIC
+UIC not found.
+
+Each line of eligible_voters.txt contains a state name followed by the eligible voter count for that state. 
+See example below. 
+
+Alabama,3606103 
+Alaska,519501 
+Arizona,4738332 
+Arkansas,2148441 
+California,25278803 
+
+Like the last milestone, consider how you want to store the data from the file.  
+You want to pick a container that lends itself to easy and efficient look up.  
+
+Run and Test Milestone #2
+Develop your code incrementally and run often until it looks right. 
+You should test on all files to make sure your function is written generally and will work for all. 
+When you feel confident your code is right, submit your code and test against the autograder. 
+You have unlimited attempts. 
+See the test case below for the format of the output.
+
+Milestone #3 - Finding Votes Proportion and Numbers of Wasted Votes
+Add to the program that prompts the user for a state name and then finds its proportion of votes in each district of that state and the numbers of wasted votes for each political party.
+
+Your program should combine everything you did in the previous milestones: 
+give an introduction, 
+prompt the user for a state name, 
+read the districts file searching for that state. 
+If the state is found in the districts file, it should record its districts info and then read the voters file searching for that state to find its number of eligible voters. 
+You may assume that if the state exists in the districts file, it also exists in the voters file. 
+After that, your program should find its proportion of votes in each district and the numbers of wasted votes. 
+See example below.
+
+This program allows you to search through
+data about congressional voting districts
+and determine whether a particular state is
+gerrymandered.
+
+Which state do you want to look up? Vermont
+District 1: DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDRRR...
+Wasted Democratic votes: 31958
+Wasted Republican votes: 59432
+Eligible voters: 496439
+
+If the state is not found, your program should output:
+
+Which state do you want to look up? Vermont Island
+Vermont Island not found.
+
+How to find a votes proportion
+For each district, you are going to print 100 letters (either D’s or R’s). 
+The D’s will be on the left and the R’s will be on the right. 
+The plot is intended to look like a text-based histogram. 
+The way you will determine how many D’s and how many R’s will be described with an example. 
+
+For Illinois, District 1 has 162268 democratic votes and has 59749 republican votes. 
+This means that 73% (162268/(162268+59749)= 0.7308809686) of District 1 are democratic votes and 27% of District 1 are republican votes. 
+Your plot then should print 73 D’s followed by 27 R’s for District 1. 
+In order to stay consistent with the solution, calculate the percentage of Democratic votes and always round it to the nearest integer. 
+Then, give the remaining percentage of the votes to Republicans.  
+
+You also should store all percentage pairs as tuples in a list for the final milestone. 
+In the example above, you would add a tuple containing 73 and 27 to your percentages list.  
+Here is an example of how you can make a list of pairs:
+
+list_of_tuples = [] # empty list
+one_tuple = (73, 23)
+list_of_tuples.append(one_tuple)
+
+How to find numbers of wasted votes
+We will define a wasted vote as any vote not needed to win the election. 
+That means there are two types of wasted votes.  
+First, all votes for the party that loses the district seat are wasted.  
+Second, all votes for the winning party "over half" that they need to win the majority are also wasted. 
+The “over half” is defined as the least number of votes that make it so they win the district. 
+An example will help.  
+Let's look at Illinois, here is some of the data from the file:
+
+Illinois,1,162268,59749,2,160337,43799, ...
+
+Let's look at District 1 and run through the wasted votes calculations. 
+Obviously, Democrats won in this district, thus all republican votes are considered wasted. 
+Therefore, there are 59749 wasted republican votes in District 1.  
+So for the losing political party, the calculation is easy!  
+On the other hand, democrats only needed "over half" the total in order to win.  
+The total votes for District 1 is 162268+59749 = 222017.  
+Therefore, democrats only needed at "over half" of the votes: (162268+59749)/2  + 1= 222017 / 2  + 1= 111009.5 to win.  
+To be consistent with the solution, you should round to nearest whole integer, meaning "over half" would come to 111010 for District 1.  
+You can see that there were actually 162268 democratic votes, which means 162268 - 111010 = 51258 were wasted.  
+This is why you hear people complain that their "vote doesn't matter" for one sided states.  
+
+That is the process for one district.  
+Then, sum up the wasted votes from all districts, if any, to get total number of wasted votes for each political party in one state.
+
+Full Screen
+For this part of your program, you will be printing a line of >100 characters (the D and R line).  
+It is recommended that you develop this portion in "Full screen" mode (see option in top right corner on IDE below).  
+The line should be on a single line "District 1: DDDD..." however, if your screen is small and your terminal is not in full screen mode, it may appear like it is on two lines.
+
+Milestone #4 - Who Was Gerrymandered?
+Add to the program that determines whether the state’s districts are gerrymandered, according to the researchers’ definition. 
+
+Firstly, copy and paste your code from the previous milestone. 
+Your program should continue what you did in the previous milestone by printing whether the state’s districts are gerrymandered. 
+
+See example below (please note, on many browsers, it will appear that the District #: DDD... line spans 2 lines but it doesn't, it is the same from MS#3).
+
+This program allows you to search through
+data about congressional voting districts
+and determine whether a particular state is
+gerrymandered.
+
+Which state do you want to look up? Georgia
+District 1: DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...
+District 2: DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRRR...
+District 3: RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...
+District 4: DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD...
+District 5: DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD...
+District 6: DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...
+District 7: DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...
+District 8: RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...
+District 9: DDDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...
+District 10: DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...
+District 11: RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...
+District 12: DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...
+District 13: DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD...
+District 14: RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR...
+Gerrymandered? No
+Wasted Democratic votes: 629416
+Wasted Republican votes: 523288
+Eligible voters: 6958725
+
+You can determine gerrymandering for states with three or more districts by counting up and comparing the total number of wasted votes for each party.
+States with less than three districts cannot be gerrymandered.
+
+We define the efficiency gap as the difference in the totals of the wasted votes for each party, expressed as a percentage of the total number of votes.
+Note that the total number of votes is not the same as the number of eligible voters.
+The total number of votes must be calculated by adding all democratic and republican votes in all of the state’s districts.
+Subtract the smaller number from the larger when possible, to ensure a nonnegative efficiency gap.
+
+Researchers have discovered that it is almost impossible for the disadvantaged party to recover if the efficiency gap is greater than or equal to 7 percent.
+Therefore, the researchers, as well as us for the purposes of this assignment, will consider a state gerrymandered when there is a 7% or greater efficiency gap.
+
+If the state’s districts are gerrymandered, your program should also print the efficiency factor and which party was gerrymandered against.
+The party gerrymandered against is the party with more wasted votes. 
+See example below (for Virginia).
+
+Gerrymandered? Yes
+Gerrymandered against: Democrats
+Efficiency Factor: 9.22%
+Wasted Democratic votes: 589093
+Wasted Republican votes: 405738
+Eligible voters: 6061032
+
+Hint: Test case 10 is a bit of a tricky edge case. Only worth 2 pts. 
+Give it a try if you are up for sorting out some fine-tuning details. 
+Skipping an edge case is also totally fine. 
+Only the strongest can see a failed test case and move on to bigger and better things! 
+But a totally respectful approach.
+
+Run and Test Milestone #4
+Develop your code incrementally and run often until it looks right.
+You should test on all files to make sure your function is written generally and will work for all.
+When you feel confident your code is right, submit your code and test against the autograder.
+You have unlimited attempts. 
+See the test case below for the format of the output.
+
+Milestone #5 - Draw Panel
+Add to the program that prompts the user for a state name and then draws a panel showing the votes distribution between Democrats and Republicans in all of that state's districts. 
+
+Most of this has already been written for you. 
+You probably just need one line of code. 
+But it is a fun way to see the front end of an application after you put so much work into the backend. 
+Good job!
+
+Firstly, copy and paste your code from the previous milestone. 
+You do not need to write any code to draw the panel. 
+We wrote it for you in the driver.py file. 
+The function name is draw_panel and it uses Turtle Graphics. 
+
+Here is the rest of the information about this function:
+
+Parameter(s): 
+- a list, the state name and its number of eligible voters
+- a list of tuples, each tuple contains the percentages of Democratic votes and Republican votes in one district of the state
+- an integer, the number of districts in the state
+
+Return(s): Nothing
+
+You should have all parameters from the previous milestones. 
+Your program should call draw_panel at the end of the program. 
+
+Let's use Illinois as an example. 
+Let's say your list of state names and number of eligible voters is called list1, for Illinois that would be list1 = ['illinois', '8983758']. 
+Let's say the list of tuples is called list_of_tuples, for Illinois that would be list_of_tuples = [(73, 27), (79, 21), (65, 35), (78, 22), (67, 33), (33, 67), (85, 15), (56, 44), (66, 34), (49, 51), (53, 47), (44, 56), (41, 59), (35, 65), (25, 75), (29, 71), (55, 45), (25, 75)]. 
+Let's say the number of districts in the state is called number, for Illinois that would be number = 18. 
+(These are very bad names, don't use them, replace with good variable names). 
+
+To call the function simply type (after setting up the three variables, which you should have already done in the past milestones):
+
+driver.draw_panel(list1, list_of_tuples, number)
+
+After running the code, the graphic will appear in a new window in the bottom right hand corner of the IDE. 
+You can expand the graphics window or pop it out into a new tab. 
+If you keep running the code, the graphics window in the tab will update without needing to close and reopen each time. 
+It will look like this for the Illinois example described here:
+
+This graphic code was written using Turtle graphics. 
+You will be able to write this yourself by the end of the semester! 
+Check out driver.py if you are curious how it is written.
+
+Run and Test Milestone #5
+Develop your code incrementally and run often until it looks right. 
+You should test on all files to make sure your function is written generally and will work for all. 
+When you feel confident your code is right, submit your code and test against the autograder. 
+You have unlimited attempts. 
+See the test case below for the format of the output.

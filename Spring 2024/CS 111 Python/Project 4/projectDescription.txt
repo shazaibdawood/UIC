@@ -1,0 +1,213 @@
+19.5 Project 4 - Shopping Application
+
+Milestone #1 - Product Functions
+We're trying some things with this project, and we ask you to attempt to enjoy it.  
+For some students, the process and style may be fun and interesting; for others, it may be confusing and frustrating.  
+
+If you think about what we're putting in front of you and actively engage with it, you may gain some valuable understanding that will be useful as you move forward.
+
+As discussed in class, we're building a shopping application, and we're thinking about it as a (semi-) real-world project.
+
+Specifications will not all be released at once, but you can work on different parts of the application as the specifications are released.
+
+All the project documents will be in the Google folder at https://drive.google.com/drive/folders/1s0eiJh4q0dDLgDOfm1ABSLiKtiNGDS6y 
+
+Getting Started
+Take a look at the document Project 4 - Shopping Application in the Google folder.  
+You can and should start building and testing(!) the listed functions even as you're waiting for additional specifications. 
+
+Although the functions to access the full products data will come in a later specification, you can use the sample products dictionary to test your functions.
+
+So, copy that products dictionary example into your code (change the name to testProducts), and use that as an argument in your function calls as you test.  
+For example, once you've finished def getProductCategories(products)  , you could test it by executing
+
+print( getProductCategories(testProducts)  ) 
+
+and seeing what your function is returning.
+
+Do that for each of the initial functions, and when done, add
+
+testingComplete = True
+
+to the end of your code.
+
+Data objects
+examples showing properties
+use these for testing function during development
+actual data will be read from files
+
+products = {
+    "ABC": {
+        "categories": ["food", "electronics"],
+        "name": "laptop",
+        "weight": 5.0,
+        "price": 650.00,
+	    "currency" : "USD",
+        "notes": "lots of features"
+    },
+    "DEF": {
+        "categories": ["electronics"],
+        "name": "TV",
+        "weight": 15.0,
+        "price": 550.00,
+	    "currency" : "USD",
+        "notes": "lots of features"
+    }
+}
+
+Product Functions
+def getProductsBySearch (products, searchTerm):
+# searches name and notes for presence of searchTerm
+# search is case-insensitive
+# returns a list of product codes, or an empty list
+
+def getProductsByCategory(products, categoryName):
+# returns a list of product codes for the category name, or an empty list
+
+def getProductCategories(products):
+# returns a list of category names, sorted
+
+def getProductPrice (products, productCode):
+# return price in USD as float
+
+Milestone #2 - Cart Functions
+Write and test your cart functions.  
+These can be found in the document Shopping App - Cart data and functions
+
+Copy the sample cart and products objects into your code, then call your functions, passing different values.
+
+Print the cart object to see whether it's being updated as you expect.
+
+When done, add
+
+testingComplete = True
+
+to the end of your code.
+
+Data Object
+
+cart = {
+    "products": {},
+    "productsTotalCost": 0.00,
+    "productsTotalWeight": 0.00,
+    "deliveryState": "",
+"taxAmount": 0.00, 
+    "deliveryMethod": "",   
+    "deliveryCost": 0.00,
+	"deliveryDaysEstimate": 0,
+	"cartTotal": 0.00
+}
+
+Description
+
+products
+dictionary of productCode:quantity pairs, e.g. {"ABC":5, "DEF":3}
+productsTotalCost
+total of product prices * quantity (USD)
+productsTotalWeight
+total of product weights * quantity
+deliveryState
+two-letter state code for delivery
+taxAmount
+taxes for this cart, based on deliveryState (USD)
+deliveryMethod
+name of delivery method (e.g., overnight)
+deliveryCost
+amount of delivery charges based on method and state (USD)
+deliveryDaysEstimate
+estimated number of days until items are delivered
+cartTotal
+productsTotalCost + taxAmount + deliveryCost  (USD)
+
+Notes
+
+prices and weights are not stored in cart products because they could change between the time an item is added to the cart and the user checks out;
+productsTotalCost, productsTotalWeight, cartTotal should be recalculated whenever the user views the cart
+
+
+Cart Functions
+
+def setCartItemQuantity(cart, productCode, quantity):
+	update cart products dictionary
+	quantity is the new quantity, not the change in quantity
+	quantity value <= 0 should remove productCode from dictionary
+	productsTotalCost, productsTotalWeight, cartTotal are set to 0
+	returns count of productCodes in the cart
+
+def updateCartTotals(products, cart):
+update productsTotalCost, productsTotalWeight, cartTotal
+return cartTotal 
+
+
+(2024/03/07 note:  at this stage, you don't have tax and shipping information, so cartTotal should be set to productsTotalCost
+	
+
+
+Notes
+
+updateCartTotals should be run before every display of the cart to users
+
+Milestone #3 - Loading Data
+Test the Loading data files and functions.  
+These can be found in the document titled Shopping App - Loading data
+
+Upload the data file and test that you can import it and access the objects.
+
+Write the function to read the shipping data csv file and turn it into an object, then test that function.
+
+When done, add
+
+testingComplete = True
+
+to the end of your code.
+
+Product Data
+
+The products data is stored in a dictionary named products  in the file data.py
+
+Each product in the dictionary includes additional properties beyond what we're using in the first version of our application, but some values (images) could be used in the future  if we migrate to a graphical user interface.
+
+State Sales Tax Rates
+
+The state sales tax rate data is stored in a dictionary named taxRates  in the file data.py
+
+Note that some states don't charge sales tax so a value of 0 is valid.
+
+Shipping Method Base Rates and Days
+
+Shipping costs are in the file shippingRatesAndTimes.csv
+
+The columns are
+
+
+Abbreviation
+two-letter state code
+State
+state name
+Standard Delivery Base Rate
+base cost for method
+Standard Delivery Estimated Days
+estimated number of days (after checkout) to deliver
+Overnight Delivery Base Rate
+base cost for method
+Overnight Delivery Estimated Days
+estimated number of days (after checkout) to deliver
+
+
+
+Notes
+A value of -1 for either base rate or estimated days indicates that the method is not available for shipments to that state. 
+This file should be read and loaded into some Python object when the application starts.  It could be a dictionary, a list of tuples, etc.
+
+Milestone #4
+As programs get more complex, various code components may be written in different files (modules), which are then imported.  (You've got experience importing modules such as math, random and turtle.)  Note also that we can apply aliases, and we use those aliases in the main code. 
+
+In this application, we're separating the cart and product data functions from the user interface functions. Create a new file named functions.py, and paste your cart and data functions into that file.   In the main program code, you would reference the module name or alias, e.g., 
+
+fx.getProductCategories(data.products)
+
+Breaking up the code this way can make it easier for developers to know where to find a specific item (function, dictionary, etc.)
+
+Note that the test script looks for the presence of a docstring in your functions.  Take a look at ZyBooks 6.17, and add a docstring to each function.  These can be brief, a single line.  If you haven't already done this, it should only take 5 minutes. 
+
+The hope and expectation is that you've already tested your functions, so you don't need to write any code in main before you Submit for Grading.    
