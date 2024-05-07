@@ -499,6 +499,11 @@ def printCategory():
 
     x -= 150
     y-= 40
+
+    # for i in range(len(categories)):
+    #     if(categories[i] == ""):
+    #         categories.pop(i)
+
     for i in categories:
         text = i
 
@@ -520,6 +525,14 @@ def showCategory(categories):
     y = -200
     textX = -60
     textY = -242
+    
+    temp = []
+    for i in range(len(categories)):
+        if(categories[i] == ""):
+            temp.append(i)
+    for i in temp:
+        categories.remove("")
+    
     for i in categories:
 
         displayCategories.penup()
@@ -580,5 +593,5 @@ if __name__ == '__main__':
     drawSubmitButton(boxColor, textColor)
     drawMistakes()
     s.onclick(selectUnselectBox)    
-
+    
     turtle.mainloop() # If this is removed, the graphics window will close and you won't see your graphics
