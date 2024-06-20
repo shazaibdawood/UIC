@@ -1,0 +1,62 @@
+Linked Lists 1
+Introduction
+
+You will be given some driver code:
+
+code in main that takes new numbers and puts it into the linked list
+The tests surpass the main and call your functions directly.
+
+Step 1: (1 Point) Make a class Node which has two parts the data part with is an integer and the pNext which is a pointer to the next node.
+
+E.g the picture below shows two node objects one with data = 5 and other with data= 6.
+
+        ----------        ----------
+        |    |   |-----> |   |   |------>.......
+        |  5 |   |       | 6 |   |     
+        ----------        ---------- 
+You have been given code to display the list look at the displayList Function.
+
+Running the code should look like:
+
+      Enter list numbers separated by space, followed by -1: 3 5 7 -1
+      The list number values are: 7 5 3
+
+To do your final submission after you complete everything, comment out the main code relating to stage 2 and 3 as your function will be directly tested.
+
+Step 2: ( 1 Point)
+
+Display the max of all numbers in the list For this you have to write the getMaxOfAllNumbers(…..) function 
+Look at the function call in main to know the return type and the parameters the function takes.
+
+Running your program should look like this:
+
+    Enter list numbers separated by space, followed by -1: 3 5 7 -1
+    The max of all numbers on the list is: 7
+
+Step 3: (1 Point) Given three nodes delete the second node and return the data stored in it. 
+You will be given a linked list with atleast 3 nodes.
+
+Write the deleteSecondNode(…) function.
+
+So your linked list should look something like this:
+
+       ----------        ----------         ----------         
+        |    |   |-----> |   |   |------>   |   |   |----->.......
+        | 5 |   |        | 6 |   |          | 4 |   |           
+        ----------        ----------      ----------      
+After deleting:
+
+       ----------        ----------
+        |    |   |-----> |   |   |------>.......
+        | 5 |   |        | 4 |   |     
+        ----------      ---------- 
+ 
+Running your program should look like this:
+
+    Enter list numbers separated by space, followed by -1: 3 5 7 -1
+
+    Deleting second node.
+    The data of the second node is: 5
+    The list number values are: 7 3
+
+To do your final submission after you complete everything, comment out the main code relating to stage 2 and 3 as your function will be directly tested.

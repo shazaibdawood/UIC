@@ -1,0 +1,99 @@
+Caesar Cipher
+
+Today you will be decoding secret messages.
+
+We will be using the Caesar Cipher, which was used by Caesar (the Roman politician and military general) to pass messages to his army.
+
+It is a shift cipher that works by shifting the positions of the text.
+
+For example, if you had to encrypt the word "ocean" by shifting the alphabets by 5: we would shift 'o' by 5 to get 't', 'c' by 5 to get 'h' and so on.
+
+So the word,
+
+PlainText: **ocean**
+Shifted Text: **thjfs**
+Cipher: shift by 5
+
+Where we can assume if plaintext to cipher map as below for shift by 5:
+
+Plain:   ABCDEFGHIJKLMNOPQRSTUVWXYZ
+Cipher:  FGHIJKLMNOPQRSTUVWXYZABCDE
+
+Shifting by 5 means alphabet A becomes alphabet F i.e. A the first alphabet becomes the (1+5=6) alphabet F, and so on. 
+    HINT: The alphabets wrap so that A comes after Z.
+
+Shifting "thjfs" by 21 gives you ShiftedText: "ocean".
+
+Running the program looks like:
+
+Enter some lower-case text: hello
+Shifting 0 gives: hello
+Shifting 1 gives: ifmmp
+Shifting 2 gives: jgnnq
+Shifting 3 gives: khoor
+Shifting 4 gives: lipps
+Shifting 5 gives: mjqqt
+Shifting 6 gives: nkrru
+Shifting 7 gives: olssv
+Shifting 8 gives: pmttw
+Shifting 9 gives: qnuux
+Shifting 10 gives: rovvy
+Shifting 11 gives: spwwz
+Shifting 12 gives: tqxxa
+Shifting 13 gives: uryyb
+Shifting 14 gives: vszzc
+Shifting 15 gives: wtaad
+Shifting 16 gives: xubbe
+Shifting 17 gives: yvccf
+Shifting 18 gives: zwddg
+Shifting 19 gives: axeeh
+Shifting 20 gives: byffi
+Shifting 21 gives: czggj
+Shifting 22 gives: dahhk
+Shifting 23 gives: ebiil
+Shifting 24 gives: fcjjm
+Shifting 25 gives: gdkkn
+
+
+But, we have given you text that is shifted like "thjfs" from the above example. 
+You have to shift the letters to read what it says.
+
+We have given you the main. 
+You will write your code in the functions.
+
+Step 1: Write the function shiftTheText(), supply the parameters, and the return type.
+
+Step 2: The function shiftTheText() will shift each alphabet given by the shift integer.
+- Given an array of characters and a shift value, shift each character in the original text by some amount, storing the result into the shiftedText array.
+- Wrap around at the end of the alphabet (like in the plaintext to cipher mapping where A appears after Z).
+
+Running the test for Stage 2:
+Only one of the output will make sense. (See example below: Shifting 17 gives: hello)
+
+Enter some lower-case text: qnuux
+Shifting 0 gives: qnuux
+Shifting 1 gives: rovvy
+Shifting 2 gives: spwwz
+Shifting 3 gives: tqxxa
+Shifting 4 gives: uryyb
+Shifting 5 gives: vszzc
+Shifting 6 gives: wtaad
+Shifting 7 gives: xubbe
+Shifting 8 gives: yvccf
+Shifting 9 gives: zwddg
+Shifting 10 gives: axeeh
+Shifting 11 gives: byffi
+Shifting 12 gives: czggj
+Shifting 13 gives: dahhk
+Shifting 14 gives: ebiil
+Shifting 15 gives: fcjjm
+Shifting 16 gives: gdkkn
+Shifting 17 gives: hello
+Shifting 18 gives: ifmmp
+Shifting 19 gives: jgnnq
+Shifting 20 gives: khoor
+Shifting 21 gives: lipps
+Shifting 22 gives: mjqqt
+Shifting 23 gives: nkrru
+Shifting 24 gives: olssv
+Shifting 25 gives: pmttw

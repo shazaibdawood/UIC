@@ -1,0 +1,24 @@
+C Strings
+We've been studying C string functions, and in this exercise, we'll write our own versions of some of these string functions. 
+Specifically, you will write one function each for the following stages.
+
+Important:
+
+You cannot use the built-in string functions.
+Each stage must be implemented in a separate function and not in main().
+Running the program would look like:
+
+Enter a word: cat
+That word has length: 3
+cat without vowels is: ct
+Enter how many duplicates to make: 3
+ctctct
+
+Stage 1: myStrlen()
+Write the myStrlen() function so that it returns the length of any given string.
+
+Stage 2: removeVowels()
+Write a function removeVowels() such that it removes all the vowels in the word entered by the user and returns a vowel-less word.
+
+Stage 3: duplicateString()
+Write a function duplicateString() such that it duplicates the string of vowel-less words some number of times.

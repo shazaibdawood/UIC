@@ -1,0 +1,16 @@
+Vending Machine
+Given two integers as user inputs that represent the number of drinks to buy and the number of bottles to restock, create a VendingMachine object that performs the following operations:
+
+Purchases the input number of drinks
+Restocks the input number of bottles
+Reports inventory
+Review the definition of VendingMachine class in "VendingMachine.cpp". A VendingMachine's initial inventory is 20 drinks.
+
+Example
+Input:
+
+5 2
+
+Output:
+
+Inventory: 17 bottles

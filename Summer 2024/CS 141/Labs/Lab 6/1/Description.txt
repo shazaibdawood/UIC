@@ -1,0 +1,48 @@
+Classes and Objects
+In this lab, we will be writing classes and see how they work with data members and member functions.
+
+Imagine we lived in a world where everyone would be given money to travel anywhere in the world for a vacation.
+
+Where would you go, how much money would you request?
+
+Refer to the main to know what parameters the functions take and what they return.
+
+You are given a class Vacation with two data members:
+
+destination (String) which represents either name of the country or city you wish to visit.
+cost (Integer) which represents the hypothetical amount in thousands of dollars you would request for.
+Stage 1: Get, Set (1 Point)
+a) Write the set function for each data member: setDestination and setCost. 
+The main() accepts the user input for the respective field and passes it to the function. 
+The set functions should take the user input and assign that value to the respective data member of the object.
+
+b) Write the get function for each data member: getDestination and getCost. 
+The function returns the values of the respective fields and which are displayed from main.
+
+Running the program should look like: (input indicated in bold)
+
+Enter the Destination and amount requested: (e.g. MachuPicchu 5): MachuPicchu 5
+You have requested for 5000$ for MachuPicchu
+
+Stage 2: Constructors (1 Point)
+a) Write a default constructor for the class to accept Alaska for destination name, 3 for cost as default values.
+
+Running the program should look like:
+
+You have requested 3000$ for Alaska.
+
+Stage 3: Compare Function (1 Point)
+a) Write a compare function which can compare the place and cost of your request and tell you if you have requested for that place or not yet. 
+The compare function should compare two objects and return true or false one with values Montana 3 and other with values Antartica 10.
+
+You do not have to print any messages; it has been handled in the main.
+
+Running the program should look like:
+
+Enter the Destination and amount to compare: (e.g. MachuPicchu 5): Alaska 3
+You have requested 3000$ for Alaska before.
+
+Running again should look like:
+
+Enter the Destination and amount to compare: (e.g. MachuPicchu 5): Antartica 10
+You have not requested 10000$ for Antartica yet.

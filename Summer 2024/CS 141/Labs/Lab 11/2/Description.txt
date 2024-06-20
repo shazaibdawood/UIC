@@ -1,0 +1,17 @@
+Output a linked list
+
+
+Write a recursive function called PrintLinkedList() that outputs the integer value of each node in a linked list. 
+Function PrintLinkedList() has one parameter, the first node (after the head node) of a list. 
+The main program reads the size of the linked list, followed by the values in the list. 
+Assume the linked list has at least 1 node and that all values will be positive.
+
+Ex: If the input of the program is:
+5 1 2 3 4 5
+
+the output of the PrintLinkedList() function is:
+1, 2, 3, 4, 5,
+
+Hint: 
+    Output the value of the current node, then call the PrintLinkedList() function repeatedly until the end of the list is reached. 
+    Refer to the IntNode class to explore any available member functions that can be used for implementing the PrintLinkedList() function.

@@ -1,0 +1,52 @@
+Linked Lists 2
+
+Step 1: (2 Points)
+
+Write a search function called linkedlistSearch() that takes a number, traverses through a linked list, and returns true if the number exists in the list and false otherwise.
+
+Running the code should look like:
+
+Enter list numbers separated by space, followed by -1: 3 5 7 -1
+
+Menu options:
+
+Search for a value.
+Display the sum of all numbers on the list.
+Exit program.
+Your choice -> 1
+
+Enter a value to initiate a search: 4
+
+The number you entered does not exist in this list.
+
+Another Example:
+
+Enter list numbers separated by space, followed by -1: 3 5 7 -1
+
+Menu options:
+
+Search for a value.
+Display the sum of all numbers on the list.
+Exit program.
+Your choice -> 1
+
+Enter a value to initiate a search: 3
+
+The number you entered exists in this list.
+
+Step 2: (1 Point)
+
+Write a function called getSumOfAllNumbers() that returns the sum of all numbers in the linked list.
+
+Running the code should look like:
+
+Enter list numbers separated by space, followed by -1: 3 5 7 -1
+
+Menu options:
+
+Search for a value.
+Display the sum of all numbers on the list.
+Exit program.
+Your choice -> 2
+
+The sum of all numbers on the list is: 15

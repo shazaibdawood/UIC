@@ -1,0 +1,85 @@
+Word Search
+A word search is often a rectangular puzzle containing a bunch of characters.
+When these characters are combined across rows, columns, or diagonals, hidden words can be discovered.
+
+Collaboration & Academic Integrity Policy
+No collaboration between students is allowed.
+Usage of resources, such as people or software, beyond the semester's instructional team is a violation of the course collaboration and academic integrity policy.
+
+If you hardcode values or outputs to pass any test harnesses, this is considered an academic integrity violation.
+You will be assessed a zero on the entire project.
+
+Submission Instructions
+Function decomposition and quality code styling will be manually graded.
+This includes quality variable name choices, appropriate levels of commenting including function comments, and decomposing your code beyond the given functions.
+This will be graded in a sufficient, insufficient, and non-existent manner and may result in up to a 5% penalty on your final score of the project.
+
+You may submit as many times as you need but to discourage spamming against the test harness there is a 1-minute timer between submissions.
+
+Assignment Specifications
+You will implement a console version of a word search puzzle solver.
+For this assignment, we provide an initial source code file containing skeleton code that you must complete.
+You are not allowed to change the provided code.
+You must use a two-dimensional array to store the puzzle.
+
+For the functions you must implement, we have provided only function stubs of a few functions.
+A stub is a function definition that compiles but does not yet implement the complete specifications for that function.
+As you develop the program, you should implement each function one at a time and test each as you go.
+Additionally, we encourage the development of several helper functions.
+These helper functions will benefit your code organization and reduce the debugging time spent fixing errors in your code.
+
+Code Restrictions
+You cannot use string concatenation or other similar incremental string-building strategies.
+Utilizing string functions or string building techniques to aid your search will result in a 0 for the entire project.
+You must be comparing characters to other characters directly.
+
+Helpful Hints
+Solve on paper first!
+Record the actual steps you take to find a word.
+Go through the given code first and note all the TODO comments.
+Don't bite off too much, do one TODO at a time, or even break down a TODO into many steps!
+Don't implement everything at once.
+A search in all 8 potential directions can be confusing; try implementing a search in one direction, then move on to another.
+If you solve on paper first, you should know all the words and the direction for each discovered word.
+Note that not all words in the word banks are in the puzzle!
+Print out the puzzle and other arrays to the console to ensure you read it from the file correctly.
+You should add the words to the discovery vector as you find them.
+You only need to find a word once, so it should only exist in the discovery vector a single time.
+All input will come from a file.
+You do not want to type those entire puzzles in!
+The input file and executable must be in the same directory.
+Don't wait until the last minute.
+ZyBooks will provide a grade and limited feedback so that you can fix your problems and resubmit prior to the deadline to earn a better grade!
+
+Example Execution
+$ ./a.out
+example_input.txt
+HELLO
+
+Example Puzzle File
+3
+2
+
+H E L L O J K L I Y Q S R P Z I M K O P
+W R L D Q J K L I Y Q S R P Z I M K O P
+B Y Z A N T I N E Q W E R T Y U I O P Z
+
+HELLO
+WORLD
+
+Additional Puzzle Files
+In addition to the above basic input example, a Star Wars puzzle text file is provided to test several directions but not all of them.
+A third puzzle, the Toy Story puzzle, is provided to test all the directions.
+We encourage you to use the basic input test first, then the Star Wars puzzle, then the Toy Story puzzle to incrementally develop and test your solution.
+
+Executing the Solution
+You can execute the solution within ZyBooks as the executable solution is included with the default template.
+To execute it, use the console area and type the following in the terminal area.
+Note that you can change the puzzle name to any provided puzzle text file name or one you created.
+The chmod command needs to be run once after initializing your workspace area; after that, the solution should remain executable unless you reset to the template.
+I recommend using the "shell" area versus the console, as the shell is not reset with every execution so you can look back after multiple executions of your program.
+
+chmod u+x wordsearch
+
+./wordsearch
+starwars_puzzle.txt
