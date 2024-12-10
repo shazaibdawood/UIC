@@ -1,0 +1,6 @@
+Rider: Romain Bardet
+Race: 2018 Tour de France 
+Stage: 19
+Distance: 200.10 km
+Elevation Gain: 4,559 m
+Total Time: 5:28:18

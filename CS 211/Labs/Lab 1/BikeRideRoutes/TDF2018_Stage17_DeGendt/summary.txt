@@ -1,0 +1,6 @@
+Rider: Thomas DeGendt
+Race: 2018 Tour de France 
+Stage: 17
+Distance: 73.07 km
+Elevation Gain: 2,963 m
+Total Time: 3:02:40

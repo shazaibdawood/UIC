@@ -1,0 +1,131 @@
+➜ make build_twisty
+rm -f ExploreTheTwistyLabyrinth.exe
+g++ -g -std=c++11 -Wall ExploreTheTwistyLabyrinth.cpp -o ExploreTheTwistyLabyrinth.exe
+make➜ make run_twisty
+./ExploreTheTwistyLabyrinth.exe
+You have not escaped!
+➜ gdb ExploreTheTwistyLabyrinth.exe
+GNU gdb (Ubuntu 15.0.50.20240403-0ubuntu1) 15.0.50.20240403-git
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<https://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from ExploreTheTwistyLabyrinth.exe...
+(gdb) b ExploreTheTwistyLabyrinth.cpp:16
+Breakpoint 1 at 0x2b3d: file ExploreTheTwistyLabyrinth.cpp, line 18.
+(gdb) r
+Starting program: /usercode/ExploreTheTwistyLabyrinth.exe 
+warning: Error disabling address space randomization: Operation not permitted
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at ExploreTheTwistyLabyrinth.cpp:18
+18          if (isPathToFreedom(start, kPathOutOfTwistyMaze)) {
+(gdb) i locals
+m = {_vptr.Maze = 0x56608b761be0 <vtable for Maze+16>, grid = {
+    _vptr.Grid = 0x56608b761c00 <vtable for Grid<MazeCell*>+16>, 
+    Rows = 0x56608c0e0300, NumRows = 4}, numRows = 4, numCols = 4, 
+  kNumTwistyRooms = 12}
+start = 0x56608c0e0410
+(gdb) p start
+$1 = (MazeCell *) 0x56608c0e0410
+(gdb) p *(start)
+$2 = {whatsHere = "", north = 0x0, south = 0x56608c0e0b50, 
+  east = 0x56608c0e0dc0, west = 0x0}
+(gdb) p *(start->east)
+$3 = {whatsHere = "", north = 0x56608c0e0c90, south = 0x56608c0e0a40, 
+  east = 0x56608c0e0410, west = 0x56608c0e0e10}
+(gdb) p *(start->east->north)
+$4 = {whatsHere = "", north = 0x56608c0e0bf0, south = 0x56608c0e0c40, 
+  east = 0x56608c0e0dc0, west = 0x56608c0e0e10}
+(gdb) p *(start->east->north->north)
+$5 = {whatsHere = "", north = 0x56608c0e0c90, south = 0x0, east = 0x0, 
+  west = 0x0}
+(gdb) p (start->east->north->north)
+$6 = (MazeCell *) 0x56608c0e0bf0
+(gdb) p *(start->east->north->north)
+$7 = {whatsHere = "", north = 0x56608c0e0c90, south = 0x0, east = 0x0, 
+  west = 0x0}
+(gdb) p *(start->east->north->south)
+$8 = {whatsHere = "", north = 0x56608c0e0ce0, south = 0x56608c0e0c90, 
+  east = 0x56608c0e0b00, west = 0x56608c0e0ab0}
+(gdb) p (start->east->north->south)
+$9 = (MazeCell *) 0x56608c0e0c40
+(gdb) p *(start->east->north->south)
+$10 = {whatsHere = "", north = 0x56608c0e0ce0, south = 0x56608c0e0c90, 
+  east = 0x56608c0e0b00, west = 0x56608c0e0ab0}
+(gdb) p *(start->east->north->south->north)
+$11 = {whatsHere = "", north = 0x56608c0e0ba0, south = 0x0, 
+  east = 0x56608c0e0c40, west = 0x0}
+(gdb) p (start->east->north->south->north)
+$12 = (MazeCell *) 0x56608c0e0ce0
+(gdb) p *(start->east->north->south->north)
+$13 = {whatsHere = "", north = 0x56608c0e0ba0, south = 0x0, 
+  east = 0x56608c0e0c40, west = 0x0}
+(gdb) p *(start->east->north->south->north->north)
+$14 = {whatsHere = "", north = 0x56608c0e0e10, south = 0x56608c0e0b50, 
+  east = 0x0, west = 0x56608c0e0ce0}
+(gdb) p (start->east->north->south->north->north)
+$15 = (MazeCell *) 0x56608c0e0ba0
+(gdb) p *(start->east->north->south->north)
+$16 = {whatsHere = "", north = 0x56608c0e0ba0, south = 0x0, 
+  east = 0x56608c0e0c40, west = 0x0}
+(gdb) p *(start->east->north->south->north->north)
+$17 = {whatsHere = "", north = 0x56608c0e0e10, south = 0x56608c0e0b50, 
+  east = 0x0, west = 0x56608c0e0ce0}
+(gdb) p (start->east->north->south->north->north)
+$18 = (MazeCell *) 0x56608c0e0ba0
+(gdb) p *(start->east->north->south->north->north)
+$19 = {whatsHere = "", north = 0x56608c0e0e10, south = 0x56608c0e0b50, 
+  east = 0x0, west = 0x56608c0e0ce0}
+(gdb) p *(start->east->north->south->north->north->south)
+$20 = {whatsHere = "", north = 0x0, south = 0x56608c0e0ba0, 
+  east = 0x56608c0e0410, west = 0x0}
+(gdb) p (start->east->north->south->north->north->south)
+$21 = (MazeCell *) 0x56608c0e0b50
+(gdb) p *(start->east->north->south->north->north->south)
+$22 = {whatsHere = "", north = 0x0, south = 0x56608c0e0ba0, 
+  east = 0x56608c0e0410, west = 0x0}
+(gdb) p *(start->east->south)
+$23 = {whatsHere = "Spellbook", north = 0x0, south = 0x0, 
+  east = 0x56608c0e0dc0, west = 0x0}
+(gdb) p (start->east->south)
+$24 = (MazeCell *) 0x56608c0e0a40
+(gdb) p *(start->east->south)
+$25 = {whatsHere = "Spellbook", north = 0x0, south = 0x0, 
+  east = 0x56608c0e0dc0, west = 0x0}
+(gdb) p *(start->east->north->west)
+$26 = {whatsHere = "", north = 0x56608c0e0c90, south = 0x56608c0e0ba0, 
+  east = 0x56608c0e0ab0, west = 0x56608c0e0dc0}
+(gdb) p (start->east->north->west)
+$27 = (MazeCell *) 0x56608c0e0e10
+(gdb) p *(start->east->north->west)
+$28 = {whatsHere = "", north = 0x56608c0e0c90, south = 0x56608c0e0ba0, 
+  east = 0x56608c0e0ab0, west = 0x56608c0e0dc0}
+(gdb) p *(start->east->north->west->east)
+$29 = {whatsHere = "Potion", north = 0x0, south = 0x56608c0e0c40, 
+  east = 0x56608c0e0e10, west = 0x0}
+(gdb) p (start->east->north->west->east)
+$30 = (MazeCell *) 0x56608c0e0ab0
+(gdb) p *(start->east->north->west->east)
+$31 = {whatsHere = "Potion", north = 0x0, south = 0x56608c0e0c40, 
+  east = 0x56608c0e0e10, west = 0x0}
+(gdb) p *(start->east->north->south->east)
+$32 = {whatsHere = "Wand", north = 0x0, south = 0x0, east = 0x0, 
+  west = 0x56608c0e0c40}
+(gdb) q
+A debugging session is active.
+
+        Inferior 1 [process 494] will be killed.
+
+Quit anyway? (y or n) y

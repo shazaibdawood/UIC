@@ -1,0 +1,72 @@
+CS 100. Discovering Computer Science. 3 hours.
+CS 107. Introduction to Computing and Programming. 4 hours.
+CS 109. Programming for Engineers with MatLab. 3 hours.
+CS 110. MATLAB Programming for Engineers. 1 hour.
+CS 111. Program Design I. 3 hours.
+CS 112. Program Design I in the Context of Biological Problems. 3 hours.
+CS 113. Program Design I in the Context of Law and Public Policy. 3 hours.
+CS 141. Program Design II. 3 hours.
+CS 151. Mathematical Foundations of Computing. 3 hours.
+CS 194. Special Topics in Computer Science. 3 hours.
+CS 211. Programming Practicum. 3 hours.
+CS 251. Data Structures. 4 hours.
+CS 261. Machine Organization. 4 hours.
+CS 277. Technical and Professional Communication in Computer Science. 3 hours.
+CS 294. Special Topics in Computer Science. 3 hours.
+CS 301. Languages and Automata. 3 hours.
+CS 341. Programming Language Design and Implementation. 3 hours.
+CS 342. Software Design. 3 hours.
+CS 351. Advanced Data Structure Practicum. 3 hours.
+CS 361. Systems Programming. 4 hours.
+CS 362. Computer Design. 4 hours.
+CS 377. Ethical Issues in Computing. 3 hours.
+CS 378. Framework-based Software Development for Hand-held Devices. 3 hours.
+CS 391. Computer Science Practicum. 1 hour.
+CS 394. Special Topics in Computer Science. 3 hours.
+CS 398. Undergraduate Design/Research. 3 hours.
+CS 401. Computer Algorithms I. 3 hours.
+CS 402. Algorithms in Practice. 3 hours.
+CS 407. Economics and Computation. 3 hours.
+CS 411. Artificial Intelligence I. 3 hours.
+CS 412. Introduction to Machine Learning. 3 hours.
+CS 415. Computer Vision I. 3 hours.
+CS 418. Introduction to Data Science. 3 hours.
+CS 421. Natural Language Processing. 3 hours.
+CS 422. User Interface Design and Programming. 3 hours.
+CS 423. Natural User Interactions. 3 hours.
+CS 424. Visualization and Visual Analytics. 3 hours.
+CS 425. Computer Graphics I. 3 hours.
+CS 426. Video Game Design and Development. 3 hours.
+CS 427. Creative Coding. 3 hours.
+CS 428. Virtual, Augmented and Mixed Reality. 3 hours.
+CS 440. Software Engineering I. 3 hours.
+CS 441. Engineering Distributed Objects For Cloud Computing. 3 hours.
+CS 442. Software Engineering II. 3 hours.
+CS 450. Introduction to Networking. 3 hours.
+CS 453. Introduction to Parallel and Distributed Processing. 3 hours.
+CS 454. Principles of Concurrent Programming. 3 hours.
+CS 455. Design and Implementation of Network Protocols. 3 hours.
+CS 461. Operating Systems Design and Implementation. 3 hours.
+CS 463. Systems Performance and Concurrent Computing. 3 hours.
+CS 466. Computer Architecture. 3 hours.
+CS 468. Network Security. 3 hours.
+CS 472. Provably Correct Programming. 3 hours.
+CS 473. Compiler Design. 3 hours.
+CS 474. Object-Oriented Languages and Environments. 3 hours.
+CS 475. Object-Oriented Programming. 3 hours.
+CS 476. Programming Language Design. 3 hours.
+CS 477. Public Policy, Legal, and Ethical Issues in Computing, Privacy, and Security. 3 hours.
+CS 478. Software Development for Mobile Platforms. 3 hours.
+CS 479. Wearables and Nearables Technology Laboratory. 3 hours.
+CS 480. Database Systems. 3 hours.
+CS 483. Big Data Mining. 3 hours.
+CS 484. Secure Web Application Development. 3 hours.
+CS 485. Networked Operating Systems Programming. 4 hours.
+CS 486. Secure Operating System Design and Implementation. 3 hours.
+CS 487. Building Secure Computer Systems. 3 hours.
+CS 488. Introduction to Cryptography. 3 hours.
+CS 489. Human Augmentics. 3 hours.
+CS 491. Seminar. 1 hour.
+CS 493. Special Problems. 3 hours.
+CS 494. Special Topics in Computer Science. 3 hours.
+CS 499. Professional Development Seminar. 0 hours.

@@ -1,0 +1,5 @@
+4
+Idol 11 210
+Chalice 9 190
+Facemask 6 130
+Goblet 4 90

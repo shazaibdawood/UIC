@@ -1,0 +1,6 @@
+Rider: Romain Bardet
+Race: 2017 Tour de France 
+Stage: 12
+Distance: 212.31 km
+Elevation Gain: 4,398 m
+Total Time: 5:49:42

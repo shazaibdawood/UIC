@@ -1,0 +1,7 @@
+6
+Bust 20 450
+Statue 15 330
+Lekythos 11 225
+Hydria 9 200
+Decanter 6 130
+Dress 4 75
